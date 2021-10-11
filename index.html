@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+<head>
+<title>South Park game</title>
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+<meta name="description" content="Салон Preme Bella - мебель, интерьеры, кухни" />
+<meta name="keywords" content="мебель, интерьеры, кухни" />
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<!-- 
+<script type="text/javascript" src="js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<link rel="stylesheet" type="text/css" href="js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<link rel="stylesheet" type="text/css" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+-->
+
+<script type="text/javascript" src="js/game.class.js"></script>
+<link rel="stylesheet" href="css/game.class.css" type="text/css" />
+<script type="text/javascript" src="js/j.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
+</head>
+<body>
+	<div id="game_start_window"><div class="bkg"></div>
+		<table class="data_table" style="width: 1000px; margin: 0 auto;">
+			<tr><th colspan="2"><h1>South Park: Волейбол</h1></th></tr>
+			<!-- tr><th><h2>Игрок 1: <span id="p1_name"></span></h2></th><th><h2>Игрок 2: <span id="p2_name"></span></h2></th></tr -->
+			<tr><th><h2><span id="p1_name"></span></h2></th><th><h2><span id="p2_name"></span></h2></th></tr>
+			<tr>
+				<td style="width: 50%;">
+					<div class="player_select pl1">
+						<a class="stan item selected"	href="stan"	 title="Стэн Марш"	rel="Стэн"><span class='body_bkg' title="Стэн Марш"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="kyle item"	href="kyle"		title="Кайл Брофловски" rel="Кайл"><span class='body_bkg' title="Кайл Брофловски"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="kenny item"	href="kenny"	title="Кенни Маккормик"	rel="Кенни"><span class='body_bkg' title="Кенни Маккормик"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="eric item"	href="eric"		title="Эрик Картман"	rel="Эрик"><span class='body_bkg' title="Эрик Картман"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="wendy item"	href="wendy"	title="Венди Тестабургер"	rel="Венди"><span class='body_bkg' title="Венди Тестабургер"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+					</div>
+				</td>
+				<td style="width: 50%;">
+					<div class="player_select pl2">
+						<a class="stan item"	href="stan"	 title="Стэн Марш"	rel="Стэн"><span class='body_bkg' title="Стэн Марш"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="kyle item selected"	href="kyle"		title="Кайл Брофловски" rel="Кайл"><span class='body_bkg' title="Кайл Брофловски"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="kenny item"	href="kenny"	title="Кенни Маккормик"	rel="Кенни"><span class='body_bkg' title="Кенни Маккормик"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="eric item"	href="eric"		title="Эрик Картман"	rel="Эрик"><span class='body_bkg' title="Эрик Картман"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+						<a class="wendy item"	href="wendy"	title="Венди Тестабургер"	rel="Венди"><span class='body_bkg' title="Венди Тестабургер"><span class='eyebrows'></span><span class='eye eye_L'></span><span class='eye eye_R'></span><span class='mouth'></span><span class='hands hand_L'></span><span class='hands hand_R'></span></span></a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="control_select p1">
+						<a href="user" title="Игрок" class="user selected"><i class="fa fa-user fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="cpu" title="Компьютер" class="cpu"><i class="fa fa-desktop fa-2x"></i></a>
+					</div>
+					<div class="control_info p1">Управление: кнопки A, W, D.</div>
+				</td>
+				<td>
+					<div class="control_select p2">
+						<a href="user" title="Игрок" class="user selected"><i class="fa fa-user fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="cpu" title="Компьютер" class="cpu"><i class="fa fa-desktop fa-2x"></i></a>
+					</div>
+					<div class="control_info p2">Управление: кнопки &larr;, &uarr;, &rarr;.</div>
+				</td>
+			</tr>
+			<tr><td colspan="2" style="text-align: center; padding: 20px;"><a href="#start" id="start_btn" class="btn3">&nbsp;&nbsp;&nbsp;&nbsp;Начать игру&nbsp;&nbsp;&nbsp;&nbsp;</a></td></tr>
+			<tr><td colspan="2" style="text-align: center; padding: 30px; font-size: 10pt;"><b>Правила игры:</b> побеждает тот игрок, который первым забьет 15 голов. При этом игорк не должен касаться мяча больше трех раз подряд. Управление игроками осуществляется с помощью клавиатуры (если в качестве игрока не выступает компьютер).</td></tr>
+		</table>
+	</div>
+	<div id="game_over_window"><div class="bkg">
+		<div style="height: 40px; text-align: center; font-size: 8pt; padding: 20px 250px;">Игра создана по мотивам мультсериала &laquo;<a href="http://southpark.cc.com/">South Park</a>&raquo;. Правообладателем мультсериала, а также всех его персонажей является компания &laquo;<a href="http://www.cc.com/">Comedy Central</a>&raquo;</div>
+		<div style="height: 400px;"><h2>South Park: Волейбол</h2></div>
+		<div style="padding: 50px;">
+			<a href="?new_game=Yes" id="new_game_btn" class="btn3 btn">&nbsp;&nbsp;&nbsp;&nbsp;Новая игра&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		</div>
+	</div></div>
+	<div id="game_pause_window"><div class="bkg">
+		<div style="height: 50px; text-align: center; font-size: 8pt; padding: 20px 250px;">
+			Игра создана по мотивам мультсериала &laquo;<a href="http://southpark.cc.com/">South Park</a>&raquo;. Правообладателем мультсериала, а также всех его персонажей является компания &laquo;<a href="http://www.cc.com/">Comedy Central</a>&raquo;
+		</div>
+		<div style="height: 400px;"><h2>South Park: Волейбол</h2></div>
+		<div>
+			<a href="#" id="resume_btn" class="btn3 btn">&nbsp;&nbsp;&nbsp;&nbsp;Продолжить&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		</div>
+		<div style="padding: 50px;">
+			<a href="?new_game=Yes" id="restart_btn" class="btn3 btn">&nbsp;&nbsp;&nbsp;&nbsp;Новая игра&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		</div>
+	</div></div>
+	<div id="play_field_container"></div>
+	<div style="text-align: center; padding: 30px;">
+		<!-- a href="#" id="pause_btn" class="btn3">&nbsp;&nbsp;&nbsp;&nbsp;&#9632;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a href="#" id="resume_btn" class="btn3">&nbsp;&nbsp;&nbsp;&nbsp;&#9658;&nbsp;&nbsp;&nbsp;&nbsp;</a -->
+		<a href="#" id="pause_btn" class="btn3">&nbsp;&nbsp;&nbsp;&nbsp;Пауза&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	</div>
+	<div id="debug_info"></div>
+	<!-- div style="position: absolute; right: 0; bottom: 0; padding: 10px;">
+		<p>
+			<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+		</p>
+	</div -->
+</body>
+</html>

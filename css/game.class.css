@@ -1,0 +1,427 @@
+/*************************************************************************/
+
+.score{
+	position: absolute;
+	top: 10px;
+	padding: 5px 10px;
+	background: #FFF;
+	/*color: #156785;*/
+	/* text-shadow: 1px 1px 1px rgba(21,103,133,0.5); */
+	
+	font-weight: bold;
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-o-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;	
+}
+.right_score{ right: 10px; }
+.left_score{ left: 10px; }
+
+.hits{
+	position: absolute;
+	top: 55px;
+	
+	/*
+	padding: 5px 10px;
+	background: #FFF;
+	color: #000;
+	opacity: 0.5;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;	
+	*/
+}
+
+.right_hits{ right: 7px; }
+.left_hits{ left: 7px; }
+.no_hits_left{
+	padding: 0;
+	margin: 0 3px;	
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	
+	/*border: 2px solid #da2140;*/
+	/*border: 2px solid #ab1010;*/
+	color: #ab1010;
+	
+	font-size: 16pt;
+	line-height: 0.6;
+	font-weight: bold;
+
+	/*
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-o-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	*/
+	/*
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;		
+	*/
+	/*
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;		
+	*/
+}
+
+.ball_hit{
+	background: transparent url('../img/ball1_hit.png') left top no-repeat;
+	/*background: transparent url('../img/ball1_hit.png') left top no-repeat;*/
+	/*background: transparent url('../img/ball3_hit.png') left top no-repeat;*/
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin: 0 3px;
+
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-o-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;		
+}
+
+
+.ball,
+.ball1,
+.ball2,
+.ball3{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	background: transparent url('../img/ball.png') left top no-repeat;
+	/*background: transparent url('../img/ball1.png') left top no-repeat;*/
+	/*background: transparent url('../img/ball3.png') left top no-repeat;*/
+	border-radius: 50%;
+	color: #555;
+	text-align: center;
+	font-size: 24pt;
+
+	/*
+	-webkit-box-shadow: inset -15px -15px 20px rgba(0,0,0,0.4), inset 12px 12px 15px rgba(255,255,255,0.3);
+	-moz-box-shadow: inset -15px -15px 20px rgba(0,0,0,0.4), inset 12px 12px 15px rgba(255,255,255,0.3);
+	-o-box-shadow: inset -15px -15px 20px rgba(0,0,0,0.4), inset 12px 12px 15px rgba(255,255,255,0.3);
+	box-shadow: inset -15px -15px 20px rgba(0,0,0,0.4), inset 12px 12px 15px rgba(255,255,255,0.3);
+	*/
+
+	line-height: 1.7;
+	z-index: 300;
+}
+.ball1{ background: transparent url('../img/ball1.png') left top no-repeat; }
+.ball2{ background: transparent url('../img/ball2.png') left top no-repeat; }
+.ball3{ background: transparent url('../img/ball3.png') left top no-repeat; }
+
+.edge,
+.head{
+	background: #eee;
+	border-radius: 50%;
+	position: absolute;
+
+	color: #555;
+	text-align: center;
+	font-size: 24pt;
+	line-height: 2.7;
+
+	box-shadow: inset -1px -1px 6px rgba(0,0,0,0.8),
+				inset 1px 1px 4px rgba(255,255,255,0.5);
+	z-index: 300;
+}
+.image_frame{
+	background: transparent;
+	border-radius: 20px;
+	position: absolute;
+	z-index: 15;
+	border: 1px dotted #FAA !important;
+}
+.flat,
+.body{
+	width: 10px;
+	height: 60px;
+	background: #eee;
+	color: #333;
+	text-align: center;
+	font-size: 8pt;
+	
+	position: absolute;
+	box-shadow: inset -1px -3px 6px rgba(0,0,0,0.8),
+				inset 1px 1px 4px rgba(255,255,255,0.5);
+	z-index: 300;
+}
+
+.shadow{
+	width: 40px;
+	height: 10px;
+	background: #000;
+	border-radius: 50%;
+	position: absolute;
+	
+	-webkit-box-shadow: inset 0 0 9px rgba(255,255,255,0.4); 
+	-moz-box-shadow: inset 0 0 9px rgba(255,255,255,0.4); 
+	-o-box-shadow: inset 0 0 9px rgba(255,255,255,0.4); 	
+	box-shadow: inset 0 0 9px rgba(255,255,255,0.4); 
+	opacity: 0.5;
+	z-index: 5;
+}
+
+/*********************************************************************/
+/* PLAYERS */
+/*********************************************************************/
+.body_bkg .eye{
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background: #000;
+	border: 1px solid black;
+	border-radius: 50%;
+	top: 37%;
+	left: 50%;
+}
+.body_bkg .eyebrows{
+	position: absolute;
+	left: 50%;
+	top: 24%;	
+}
+.body_bkg .eye_L{
+	left: 40%;
+}
+.body_bkg .eye_R{
+	left: 60%;
+}
+.body_bkg .mouth{
+	width: 17px;
+	height: 4px;
+	background: transparent url('../img/mouth.png') left top no-repeat;
+	position: absolute;
+	left: 45%;
+	bottom: 40%;
+}
+
+
+.sad .body_bkg .mouth{
+	width: 19px;
+	height: 4px;
+	background: transparent url('../img/mouth0.png') left top no-repeat;
+	position: absolute;
+	left: 45%;
+	bottom: 40%;
+}
+.glad .body_bkg .mouth{
+	width: 40px;
+	height: 19px;
+	background: transparent url('../img/mouth1.png') left top no-repeat;
+	margin-left: -14px;
+	margin-bottom: -9px;
+}
+.talking .body_bkg .mouth{
+	width: 25px;
+	height: 15px;
+	background: transparent url('../img/mouth2.png') left top no-repeat;
+	margin-left: -5px;
+	margin-bottom: -6px;
+}
+.angry .body_bkg .eyebrows{
+	width: 56px;
+	height: 16px;
+	background: transparent url('../img/eyebrows1.png') left top no-repeat;
+	margin-left: -27px;
+	margin-top: -7px;
+}
+.angry .body_bkg .mouth{
+	width: 33px;
+	height: 11px;
+	background: transparent url('../img/mouth3.png') left top no-repeat;
+	margin-left: -8px;
+	margin-bottom: -2px;
+}
+
+.surprised .body_bkg .eyebrows{
+	width: 76px;
+	height: 12px;
+	background: transparent url('../img/eyebrows0.png') left top no-repeat;
+	margin-left: -38px;
+	
+}
+.surprised .body_bkg .mouth{
+	width: 18px;
+	height: 12px;
+	background: transparent url('../img/mouth4.png') left top no-repeat;
+	margin-left: 0;
+	margin-bottom: -4px;
+}
+
+.scared .body_bkg .eyebrows{
+	width: 83px;
+	height: 21px;
+	background: transparent url('../img/eyebrows3.png') left top no-repeat;
+	margin-left: -42px;
+	margin-top: 15px;
+}
+.scared .body_bkg .mouth{
+	width: 23px;
+	height: 11px;
+	background: transparent url('../img/mouth5.png') left top no-repeat;
+	margin-left: -2px;
+	margin-bottom: -4px;
+}
+
+.fighting .body_bkg .eyebrows{
+	width: 78px;
+	height: 44px;
+	background: transparent url('../img/eyebrows2.png') left top no-repeat;
+	margin-left: -38px;
+	margin-top: 4px;
+	z-index: 100;
+}
+.fighting .body_bkg .mouth{
+	width: 33px;
+	height: 11px;
+	background: transparent url('../img/mouth3.png') left top no-repeat;
+	margin-left: -8px;
+	margin-bottom: -2px;
+}
+/*********************************/
+/* STAN */
+.stan{ position: absolute; z-index: 100; }
+.stan .body_bkg{
+	width: 127px;
+	height: 197px;
+	background: transparent url('../img/stan.png') left top no-repeat;
+	position: absolute;
+	top: 0;
+	top: -13px;
+}
+.stan .body_bkg .eyebrows{ top: 31%; }
+.stan .body_bkg .eye{ top: 42%; }
+.stan .body_bkg .mouth{ left: 44%; bottom: 36%; }
+
+/*********************************/
+/* KYLE */
+.kyle{ position: absolute; z-index: 100; }
+.kyle .body_bkg{
+	width: 150px;
+	height: 186px;
+	background: transparent url('../img/kyle.png') left top no-repeat;
+	position: absolute;
+	left: -10px;
+	top: 0;
+}
+
+/*********************************/
+/* KENNY */
+.kenny{ position: absolute; z-index: 100; }
+.kenny .body_bkg{
+	width: 132px;
+	height: 187px;
+	background: transparent url('../img/kenny.png') left top no-repeat;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.kenny .body_bkg .mouth{ display: none; }
+.kenny .body_bkg .eyebrows{ display: none; }
+
+/*********************************/
+/* ERIC */
+.eric{ position: absolute; z-index: 100; }
+.eric .body_bkg{ 
+	width: 202px;
+	height: 187px;
+	background: transparent url('../img/eric.png') left top no-repeat;
+	position: absolute;
+	left: -27px;
+	top: -14px;
+}
+.eric .body_bkg .eyebrows{ left: 51%; top: 23%; }
+.eric[class*="fighting"] .body_bkg .eyebrows{ left: 52%; top: 23%; margin-left: -39px; margin-top: 3px;}
+.eric[class*="scared"] .body_bkg .eyebrows{ margin-left: -40px; }
+.eric .body_bkg .eye{ top: 34%; }
+.eric .body_bkg .eye_L{ left: 45%; }
+.eric .body_bkg .eye_R{ left: 57%; }
+.eric .body_bkg .mouth{ left: 47%; bottom: 40%; }
+
+/*********************************/
+/* WENDY */
+.wendy{ position: absolute; z-index: 100; }
+.wendy .body_bkg{ 
+	width: 131px;
+	height: 187px;
+	background: transparent url('../img/wendy.png') left top no-repeat;
+	position: absolute;
+	left: -3px;
+	top: 0;
+}
+.wendy .body_bkg .eye_R{ margin-top: 2px; }
+.wendy .body_bkg .eyebrows{
+	left: 53%; top: 25%;
+	-webkit-transform: rotate(4deg);
+	-moz-transform: rotate(4deg);
+	-ms-transform: rotate(4deg);
+	transform: rotate(4deg);
+}
+/*********************************/
+/*********************************/
+.player_select{
+	width: 100%;
+}
+.player_select .item{
+	display: inline-block;
+	width: 70px;
+	height: 80px;
+	border: 2px solid transparent;
+	position: relative;
+	cursor: pointer;
+}
+.player_select span{ display: inline-block; }
+.player_select .item .body_bkg{
+	position: absolute;
+	margin-top: -50px;
+	left: -40px;
+    -ms-transform: scale(0.3, 0.3); /* IE 9 */
+    -webkit-transform: scale(0.3, 0.3); /* Chrome, Safari, Opera */
+    transform: scale(0.3, 0.3);
+}
+
+.player_select .stan	.body_bkg{ margin-top: -45px; left: -28px; }
+.player_select .kenny .body_bkg{ left: -30px; }
+.player_select .eric .body_bkg{ margin-top: -37px; left: -66px; }
+.player_select .wendy .body_bkg{ left: -30px; }
+
+.player_select .selected,
+.player_select .item:hover{
+	background: #FFF;
+	border: 2px solid #3bb3e0;
+	padding: 0;
+	
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	-o-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;	
+	
+}
+.player_select .selected{ background: #f7f7f7; }
+.control_select a:not(.selected){ color: #AAA; }
+.control_select a:hover{ color: #3bb3e0; }
+
+.control_info{
+	padding-top: 20px;
+	font-size: 12pt;
+}
