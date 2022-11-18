@@ -1,2 +1,2 @@
 # SPBall
-html volleyball game written in 2014
+Volleyball game written using C++ in 2005, and then rewritten using JavaScript in 2014
