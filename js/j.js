@@ -62,7 +62,7 @@ $(document).ready(function() {
 	
 	$("#p2_name").html($(".pl2 .item[class*=selected]").first().attr("title"));
 	$(".pl2 .item").click(function(){
-		$(".pl2 .item").removeClass("selected");
+		$(".pl2 .item").removeClass("selected"); 
 		$(this).addClass("selected");
 		$("#p2_name").html($(this).attr("title"));
 		return false;
