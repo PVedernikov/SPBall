@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 });
 	
-	// Наследование классов
+	// РќР°СЃР»РµРґРѕРІР°РЅРёРµ РєР»Р°СЃСЃРѕРІ
 	function Extend(Child, Parent){
 		var F = function () { };
 		F.prototype = Parent.prototype;
@@ -100,13 +100,13 @@ $(document).ready(function() {
 			var obj = new FieldObject(objectId, objectRadius);
 			obj.SetGameFieldSelector(this.gameFieldSelector);
 			this.fixedObjects.push(obj);
-			//this.objects.unshift(obj); // Важно фиксированные элементы добавлять в начало массива
+			//this.objects.unshift(obj); // Р’Р°Р¶РЅРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РґРѕР±Р°РІР»СЏС‚СЊ РІ РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
 		}		
 		this.AddVerticalObject = function(objectId, width, height){
 			var obj = new VerticalObject(objectId, width, height);
 			obj.SetGameFieldSelector(this.gameFieldSelector);
 			this.fixedObjects.push(obj);
-			//this.objects.unshift(obj); // Важно фиксированные элементы добавлять в начало массива
+			//this.objects.unshift(obj); // Р’Р°Р¶РЅРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РґРѕР±Р°РІР»СЏС‚СЊ РІ РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
 		}		
 		
 		this.GedObjectById = function(objectId){
@@ -282,7 +282,7 @@ $(document).ready(function() {
 		}
 	}
 
-	// Управление игроками
+	// РЈРїСЂР°РІР»РµРЅРёРµ РёРіСЂРѕРєР°РјРё
 	function PlayerManualController(obj, side, ballObj){
 		this.player = obj;
 		this.side = side;
@@ -630,7 +630,7 @@ $(document).ready(function() {
 		}
 	}
 	
-	// Круглые неподвижные объекты
+	// РљСЂСѓРіР»С‹Рµ РЅРµРїРѕРґРІРёР¶РЅС‹Рµ РѕР±СЉРµРєС‚С‹
 	function FieldObject(dNodeSelector, rad){
 		this.domNodeSelector = dNodeSelector;
 		this.domNode = false;
@@ -662,12 +662,12 @@ $(document).ready(function() {
 								"height": (this.radius*2) + "px"
 								});
 		},		
-		// Перемещение объекта в определенную точку
+		// РџРµСЂРµРјРµС‰РµРЅРёРµ РѕР±СЉРµРєС‚Р° РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ С‚РѕС‡РєСѓ
 		SetPosition:	function(x, y){
 			//if(this.domNode == false) return false;
 			this.fieldPosition = [x, y];
 			//--------------------------------------------------
-			// Анимируем перемещение в новую точку
+			// РђРЅРёРјРёСЂСѓРµРј РїРµСЂРµРјРµС‰РµРЅРёРµ РІ РЅРѕРІСѓСЋ С‚РѕС‡РєСѓ
 			//--------------------------------------------------
 			/*this.domNode.stop().animate({
 				left: x - this.radius,
@@ -681,7 +681,7 @@ $(document).ready(function() {
 		Freeze: function(){ this.enabled = false; },
 		Unfreeze: function(){ this.enabled = true; },
 		
-		// Отразить объект
+		// РћС‚СЂР°Р·РёС‚СЊ РѕР±СЉРµРєС‚
 		ReflectBallObject: function(object){
 			if(!object.enabled) return;
 			
@@ -695,9 +695,9 @@ $(document).ready(function() {
 			var difVector_next = [pos1[0] - pos2[0], pos1[1] - pos2[1]];
 			var distance2_next = Math.sqrt(difVector_next[0]*difVector_next[0] + difVector_next[1]*difVector_next[1]);
 			
-			// Если объекты разлетаются в стороны, то ничего не делаем
+			// Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ СЂР°Р·Р»РµС‚Р°СЋС‚СЃСЏ РІ СЃС‚РѕСЂРѕРЅС‹, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 			if(distance2_next > distance2_now) return;
-			// Если объекты уже внутри друг друга, то ничего не делаем, чтобы дать им возможность расцепиться
+			// Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ СѓР¶Рµ РІРЅСѓС‚СЂРё РґСЂСѓРі РґСЂСѓРіР°, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј, С‡С‚РѕР±С‹ РґР°С‚СЊ РёРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°СЃС†РµРїРёС‚СЊСЃСЏ
 			//if(distance2_now < this.radius + object.radius) return;
 			
 			if(distance2_next <= this.radius + object.radius){
@@ -731,7 +731,7 @@ $(document).ready(function() {
 		}		
 	}
 	
-	// Вертикальные прямоугольные объекты
+	// Р’РµСЂС‚РёРєР°Р»СЊРЅС‹Рµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Рµ РѕР±СЉРµРєС‚С‹
 	function VerticalObject(dNodeSelector, width, height){
 		FieldObject.call(this, dNodeSelector, 0);
 		this.width	= width;
@@ -780,7 +780,7 @@ $(document).ready(function() {
 	}
 	Extend(VerticalObject, FieldObject);
 	
-	// Мяч
+	// РњСЏС‡
 	function ObjectBall(dNodeSelector, rad){
 		FieldObject.call(this, dNodeSelector, rad);
 		this.gravityA = [0, 0.6];
@@ -808,12 +808,12 @@ $(document).ready(function() {
 		SetRotationSpeed:	function(x){ this.rotationSpeed = x; },
 		SetRotationAngle:	function(x){ this.rotationAngle = x; },
 		AddHit:	function(x){ this.floorHits.push(x); },
-		// Перемещение объекта в определенную точку
+		// РџРµСЂРµРјРµС‰РµРЅРёРµ РѕР±СЉРµРєС‚Р° РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ С‚РѕС‡РєСѓ
 		SetPosition:	function(x, y){
 			if(this.domNode == false) return false;
 			this.fieldPosition = [x, y];
 			//--------------------------------------------------
-			// Анимируем перемещение в новую точку
+			// РђРЅРёРјРёСЂСѓРµРј РїРµСЂРµРјРµС‰РµРЅРёРµ РІ РЅРѕРІСѓСЋ С‚РѕС‡РєСѓ
 			//--------------------------------------------------
 			//this.domNode.css({"left": (x - this.radius) + "px", "top": (y - this.radius) + "px"});
 			this.domNode.stop().animate({
@@ -824,7 +824,7 @@ $(document).ready(function() {
 			});		
 			
 			//--------------------------------------------------
-			// Анимируем поворот объекта при полете
+			// РђРЅРёРјРёСЂСѓРµРј РїРѕРІРѕСЂРѕС‚ РѕР±СЉРµРєС‚Р° РїСЂРё РїРѕР»РµС‚Рµ
 			//--------------------------------------------------
 			var oldAngle = this.rotationAngle;
 			var newAngle = this.rotationAngle + this.rotationSpeed;
@@ -850,12 +850,12 @@ $(document).ready(function() {
 			*/
 			
 			//--------------------------------------------------
-			// Анимируем перемещение тени объекта
+			// РђРЅРёРјРёСЂСѓРµРј РїРµСЂРµРјРµС‰РµРЅРёРµ С‚РµРЅРё РѕР±СЉРµРєС‚Р°
 			//--------------------------------------------------
 			var objectShadowIdSelector = $("#" + this.domNodeSelector).attr("id") + "_shadow";
-			// Проверяем, есть ли у объекта тень
+			// РџСЂРѕРІРµСЂСЏРµРј, РµСЃС‚СЊ Р»Рё Сѓ РѕР±СЉРµРєС‚Р° С‚РµРЅСЊ
 			if($("#" + objectShadowIdSelector).length <= 0){
-				// Если тени нет, добавляем ее
+				// Р•СЃР»Рё С‚РµРЅРё РЅРµС‚, РґРѕР±Р°РІР»СЏРµРј РµРµ
 				$(this.gameFieldSelector).append("<div id='" + objectShadowIdSelector + "' class='shadow'></div>");
 				$("#" + objectShadowIdSelector).width(this.radius*2).height(10).css("left", (x - this.radius) + "px").css("top", ($(this.gameFieldSelector).height() - floorLevel/2) + "px");
 			} 
@@ -869,7 +869,7 @@ $(document).ready(function() {
 			//--------------------------------------------------
 		},
 		
-		// Вычислить новые координаты объекта и переместить его туда
+		// Р’С‹С‡РёСЃР»РёС‚СЊ РЅРѕРІС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹ РѕР±СЉРµРєС‚Р° Рё РїРµСЂРµРјРµСЃС‚РёС‚СЊ РµРіРѕ С‚СѓРґР°
 		Move: function(){
 			if(this.frozen){
 				if(!this.domNode.hasClass("busy") && !this.enabled){
@@ -926,7 +926,7 @@ $(document).ready(function() {
 			return [newX, newY];
 		},
 		
-		// Проверка столкновений c игровым полем
+		// РџСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёР№ c РёРіСЂРѕРІС‹Рј РїРѕР»РµРј
 		CheckAndResolveFieldCollision: function(){
 			if(this.fieldPosition[0] - this.radius < 0 && this.speed[0] < 0){
 				this.SetSpeed(-1 * this.speed[0], this.speed[1]);
@@ -946,7 +946,7 @@ $(document).ready(function() {
 			}
 		},
 		
-		// Проверка столкновеня c другим объектом
+		// РџСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅСЏ c РґСЂСѓРіРёРј РѕР±СЉРµРєС‚РѕРј
 		CheckObjectCollision: function(object){
 			var difVector = [this.fieldPosition[0] - object.fieldPosition[0], this.fieldPosition[1] - object.fieldPosition[1]];
 			var distance2 = difVector[0]*difVector[0] + difVector[1]*difVector[1];
@@ -965,9 +965,9 @@ $(document).ready(function() {
 			var difVector_next = [pos1[0] - pos2[0], pos1[1] - pos2[1]];
 			var distance2_next = difVector_next[0]*difVector_next[0] + difVector_next[1]*difVector_next[1];
 			
-			// Если объекты разлетаются в стороны, то ничего не делаем
+			// Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ СЂР°Р·Р»РµС‚Р°СЋС‚СЃСЏ РІ СЃС‚РѕСЂРѕРЅС‹, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 			if(distance2_next > distance2_now) return;
-			// Если объекты уже внутри друг друга, то ничего не делаем, чтобы дать им возможность расцепиться
+			// Р•СЃР»Рё РѕР±СЉРµРєС‚С‹ СѓР¶Рµ РІРЅСѓС‚СЂРё РґСЂСѓРі РґСЂСѓРіР°, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј, С‡С‚РѕР±С‹ РґР°С‚СЊ РёРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°СЃС†РµРїРёС‚СЊСЃСЏ
 			if(distance2_now < (this.radius + object.radius)*(this.radius + object.radius)) return;
 			
 			if(distance2_next <= (this.radius + object.radius)*(this.radius + object.radius)){

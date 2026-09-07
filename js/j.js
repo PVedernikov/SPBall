@@ -6,27 +6,27 @@ $(document).ready(function() {
 	var bkg_num = getRandomInt(0, 5);
 	$("#play_field_container").css("background-image", "url('img/field_bkg" + bkg_num + ".jpg')");
 	
-	// Делаем паузу, чтобы браузер успел отрендерить игровое поле и на была известна его ширина
+	// Р”РµР»Р°РµРј РїР°СѓР·Сѓ, С‡С‚РѕР±С‹ Р±СЂР°СѓР·РµСЂ СѓСЃРїРµР» РѕС‚СЂРµРЅРґРµСЂРёС‚СЊ РёРіСЂРѕРІРѕРµ РїРѕР»Рµ Рё РЅР° Р±С‹Р»Р° РёР·РІРµСЃС‚РЅР° РµРіРѕ С€РёСЂРёРЅР°
 	setTimeout(function(){ 
 		SPGame = new Game("#play_field_container");
 		SPGame.AddGameOverCallback(function(msg){
-			$("#game_over_window").find("h2").html("Победитель: " + $("#p" + msg + "_name").html() + "! <br/>(игрок №" + msg + ")");
+			$("#game_over_window").find("h2").html("РџРѕР±РµРґРёС‚РµР»СЊ: " + $("#p" + msg + "_name").html() + "! <br/>(РёРіСЂРѕРє в„–" + msg + ")");
 			$("#game_over_window").fadeIn("slow");
 			$("#pause_btn").hide();
 			//alert(msg);
 			//console.log(msg);
 		});
-		// Верхушка сетки
+		// Р’РµСЂС…СѓС€РєР° СЃРµС‚РєРё
 		SPGame.AddFixedObject("gridEdge", 7);
 		var GridEdge = SPGame.GedObjectById("gridEdge");
 		GridEdge.SetPosition($(gameFieldSelector).width()/2, 250);
 		GridEdge.domNode.addClass("edge").css("background", "#EEE");
-		// Сетка
+		// РЎРµС‚РєР°
 		SPGame.AddVerticalObject("gridBody", 14, 350);
 		var GridBody = SPGame.GedObjectById("gridBody");
 		GridBody.SetPosition($(gameFieldSelector).width()/2 - 7, 250);
 		GridBody.domNode.addClass("flat");
-		// Мяч
+		// РњСЏС‡
 		SPGame.AddBallObject("ball1", 40);
 		Ball1 = SPGame.GedObjectById("ball1");
 		//Ball1.SetSpeed(-12,10);
@@ -72,21 +72,21 @@ $(document).ready(function() {
 		$(this).parents(".control_select").first().children("a").removeClass("selected");
 		$(this).addClass("selected");
 		if($(".control_select[class*=p1]").find(".selected").first().attr("href") == "user"){
-			$(".control_info[class*=p1]").html("Управление: кнопки A, W, D.");
+			$(".control_info[class*=p1]").html("РЈРїСЂР°РІР»РµРЅРёРµ: РєРЅРѕРїРєРё A, W, D.");
 		}else{
-			$(".control_info[class*=p1]").html("Управление: CPU");
+			$(".control_info[class*=p1]").html("РЈРїСЂР°РІР»РµРЅРёРµ: CPU");
 		}
 		if($(".control_select[class*=p2]").find(".selected").first().attr("href") == "user"){
-			$(".control_info[class*=p2]").html("Управление: кнопки &larr;, &uarr;, &rarr;.");
+			$(".control_info[class*=p2]").html("РЈРїСЂР°РІР»РµРЅРёРµ: РєРЅРѕРїРєРё &larr;, &uarr;, &rarr;.");
 		}else{
-			$(".control_info[class*=p2]").html("Управление: CPU");
+			$(".control_info[class*=p2]").html("РЈРїСЂР°РІР»РµРЅРёРµ: CPU");
 		}
 		return false;
 	});
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$("#start_btn").click(function(){
-		// Игрок 1
+		// РРіСЂРѕРє 1
 		SPGame.AddPlayer("player1", 220, 450);
 		var Player1 = SPGame.GedObjectById("player1");
 		var Player1Class = $(".pl1 .item[class*=selected]").first().attr("href");
@@ -102,11 +102,11 @@ $(document).ready(function() {
 		}else{
 			var Controller1 = new PlayerCpuController(Player1, "left", Ball1);
 			SPGame.AddController(Controller1);
-			// Если играет комп, то отдаем право первого удара игроку
+			// Р•СЃР»Рё РёРіСЂР°РµС‚ РєРѕРјРї, С‚Рѕ РѕС‚РґР°РµРј РїСЂР°РІРѕ РїРµСЂРІРѕРіРѕ СѓРґР°СЂР° РёРіСЂРѕРєСѓ
 			Ball1.SetPosition((3*$(gameFieldSelector).width())/4, $(gameFieldSelector).height()/2 + 20);
 		}
 
-		// Игрок 2
+		// РРіСЂРѕРє 2
 		SPGame.AddPlayer("player2", $(gameFieldSelector).width() - 220, 450);
 		var Player2 = SPGame.GedObjectById("player2");
 		var Player2Class = $(".pl2 .item[class*=selected]").first().attr("href");
@@ -122,7 +122,7 @@ $(document).ready(function() {
 		}else{
 			var Controller2 = new PlayerCpuController(Player2, "right", Ball1);
 			SPGame.AddController(Controller2);
-			// Если играет комп, то отдаем право первого удара игроку
+			// Р•СЃР»Рё РёРіСЂР°РµС‚ РєРѕРјРї, С‚Рѕ РѕС‚РґР°РµРј РїСЂР°РІРѕ РїРµСЂРІРѕРіРѕ СѓРґР°СЂР° РёРіСЂРѕРєСѓ
 			Ball1.SetPosition((1*$(gameFieldSelector).width())/4, $(gameFieldSelector).height()/2 + 20);
 		}
 
@@ -166,7 +166,7 @@ $(document).ready(function() {
 //function toDegrees (angle) { return angle * (180 / Math.PI); }
 //function toRadians (angle) { return angle * (Math.PI / 180); }
 
-// использование Math.round() даст неравномерное распределение!
+// РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Math.round() РґР°СЃС‚ РЅРµСЂР°РІРЅРѕРјРµСЂРЅРѕРµ СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ!
 function getRandomInt(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
