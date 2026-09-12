@@ -237,13 +237,8 @@ a.btn2:active{
 	color: white;
 }
 
-
-
-
-/*
-.player_select .item .pl,
-.player_select .item .pl .body_bkg{
-	position: relative !important;
-	margin: 0 auto;
+.control_select a {
+	display: inline-block;
+	width: 48px;
 }
-*/
+

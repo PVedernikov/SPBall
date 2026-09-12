@@ -78,12 +78,12 @@ $(document).ready(function () {
 	$(".control_select a").click(function(){
 		$(this).parents(".control_select").first().children("a").removeClass("selected");
 		$(this).addClass("selected");
-		if($(".control_select[class*=p1]").find(".selected").first().attr("href") == "user"){
+		if($(".control_select[class*=p1]").find(".selected").first().attr("href") == "#user"){
 			$(".control_info[class*=p1]").html(Captions[lang].control1);
 		}else{
 			$(".control_info[class*=p1]").html(Captions[lang].controlCpu);
 		}
-		if($(".control_select[class*=p2]").find(".selected").first().attr("href") == "user"){
+		if($(".control_select[class*=p2]").find(".selected").first().attr("href") == "#user"){
 			$(".control_info[class*=p2]").html(Captions[lang].control2);
 		}else{
 			$(".control_info[class*=p2]").html(Captions[lang].controlCpu);
@@ -253,14 +253,23 @@ function ChangeLanguage(lang) {
 	$("a[href = 'kenny'] .body_bkg").attr("title", Captions[lang].kenny_mccormick);
 	$("a[href = 'eric'] .body_bkg").attr("title", Captions[lang].eric_cartman);
 	$("a[href = 'wendy'] .body_bkg").attr("title", Captions[lang].wendy_testaburger);
-	$(".control_info.p1").html(Captions[lang].control1);
-	$(".control_info.p2").html(Captions[lang].control2);
 	$(".game_rules").html(Captions[lang].rules);
-	$("a[href='user']").attr("title", Captions[lang].user);
-	$("a[href='cpu']").attr("title", Captions[lang].cpu);
+	$("a[href='#user']").attr("title", Captions[lang].user);
+	$("a[href='#cpu']").attr("title", Captions[lang].cpu);
 	$(".game_disclamer").html(Captions[lang].disclaimer);
 	$("#p1_name").html($(".player_select.pl1 .selected").first().attr("title"));
 	$("#p2_name").html($(".player_select.pl2 .selected").first().attr("title"));
+
+	if ($(".control_select[class*=p1]").find(".selected").first().attr("href") == "#user") {
+		$(".control_info[class*=p1]").html(Captions[lang].control1);
+	} else {
+		$(".control_info[class*=p1]").html(Captions[lang].controlCpu);
+	}
+	if ($(".control_select[class*=p2]").find(".selected").first().attr("href") == "#user") {
+		$(".control_info[class*=p2]").html(Captions[lang].control2);
+	} else {
+		$(".control_info[class*=p2]").html(Captions[lang].controlCpu);
+	}
 }
 
 function SetCookie(cname, cvalue, exdays) {
