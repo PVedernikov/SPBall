@@ -9,7 +9,7 @@ var dKeyPressed = false;
 var wKeyPressed = false;
 
 var maxPlayerBallHits = 3;
-var maxGameScore = 1;
+var maxGameScore = 15;
 var goalAfterPause = 3000;
 
 $(document).ready(function() { 
