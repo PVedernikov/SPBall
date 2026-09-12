@@ -1,16 +1,23 @@
-$(document).ready(function() { 
+$(document).ready(function () {
+	let lang = GetCookie('spball_lang');
+	if (!lang || (lang !== "en" && lang !== "ru")) {
+		lang = "en";
+	}
+
+	ChangeLanguage(lang);
+
 	var gameFieldSelector = "#play_field_container";
 	var SPGame;
 	var Ball1;
-	
+
 	var bkg_num = getRandomInt(0, 5);
 	$("#play_field_container").css("background-image", "url('img/field_bkg" + bkg_num + ".jpg')");
 	
 	// Делаем паузу, чтобы браузер успел отрендерить игровое поле и на была известна его ширина
 	setTimeout(function(){ 
 		SPGame = new Game("#play_field_container");
-		SPGame.AddGameOverCallback(function(msg){
-			$("#game_over_window").find("h2").html("Победитель: " + $("#p" + msg + "_name").html() + "! <br/>(игрок №" + msg + ")");
+		SPGame.AddGameOverCallback(function (msg) {
+			$("#game_over_window").find("h2").html(`${Captions[lang].winner}: ${$(`#p${msg}_name`).html()}! <br/>(${Captions[lang].player} ${Captions[lang].n}${msg})`);
 			$("#game_over_window").fadeIn("slow");
 			$("#pause_btn").hide();
 			//alert(msg);
@@ -72,14 +79,14 @@ $(document).ready(function() {
 		$(this).parents(".control_select").first().children("a").removeClass("selected");
 		$(this).addClass("selected");
 		if($(".control_select[class*=p1]").find(".selected").first().attr("href") == "user"){
-			$(".control_info[class*=p1]").html("Управление: кнопки A, W, D.");
+			$(".control_info[class*=p1]").html(Captions[lang].control1);
 		}else{
-			$(".control_info[class*=p1]").html("Управление: CPU");
+			$(".control_info[class*=p1]").html(Captions[lang].controlCpu);
 		}
 		if($(".control_select[class*=p2]").find(".selected").first().attr("href") == "user"){
-			$(".control_info[class*=p2]").html("Управление: кнопки &larr;, &uarr;, &rarr;.");
+			$(".control_info[class*=p2]").html(Captions[lang].control2);
 		}else{
-			$(".control_info[class*=p2]").html("Управление: CPU");
+			$(".control_info[class*=p2]").html(Captions[lang].controlCpu);
 		}
 		return false;
 	});
@@ -149,18 +156,12 @@ $(document).ready(function() {
 			}
 			return false;
 		}
-	});	
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	// FANCYBOX
-	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	/*$('.fancybox').fancybox({
-		helpers : {
-			title : {
-				type : 'inside'
-			}
-		}
-	});*/
+	});
 
+	$(".game_lang").click(function(){
+		lang = $(this).attr("rel");
+		ChangeLanguage(lang);
+	});
 });
 
 //function toDegrees (angle) { return angle * (180 / Math.PI); }
@@ -173,4 +174,114 @@ function getRandomInt(min, max){
 
 function DebugInfo(msg){
 	$("#debug_info").html(msg);
+}
+
+const Captions = {
+	"en": {
+		"title": "Volleyball",
+		"start_btn": "Play",
+		"pause_btn": "Pause",
+		"resume_btn": "Resume",
+		"restart_btn": "New Game",
+		"stan_marsh": "Stan Marsh",
+		"stan": "Stan",
+		"kyle_broflovski": "Kyle Broflovski",
+		"kyle": "Kyle",
+		"kenny": "Kenny",
+		"kenny_mccormick": "Kenny McCormick",
+		"eric": "Eric",
+		"eric_cartman": "Eric Cartman",
+		"wendy": "Wendy",
+		"wendy_testaburger": "Wendy Testaburger",
+		"control1": "Controls: buttons A, W, D.",
+		"control2": "Controls: buttons &larr;, &uarr;, &rarr;.",
+		"controlCpu": "Controls: CPU",
+		"user": "User",
+		"cpu": "CPU",
+		"rules": "<b>Game rules:</b> The first player to score 15 goals wins. A player must not touch the ball more than three times in a row. Players are controlled using the keyboard (unless the computer is playing).",
+		"disclaimer": "This game is a fan-made project and is not affiliated with or endorsed by the creators of &laquo;<a href=\"http://southpark.cc.com/\">South Park</a>&raquo;. All characters and settings are the property of their respective owners.",
+		"winner": "Winner",
+		"player": "Player",
+		"n": "#",
+	},
+	"ru": {
+		"title": "Волейбол",
+		"pause_btn": "Пауза",
+		"resume_btn": "Продолжить",
+		"start_btn": "Начать игру",
+		"restart_btn": "Новая игра",
+		"stan_marsh": "Стен Марш",
+		"stan": "Стен",
+		"kyle_broflovski": "Кайл Брофловски",
+		"kyle": "Кайл",
+		"kenny_mccormick": "Kenny МакКормик",
+		"kenny": "Кенни",
+		"eric_cartman": "Эрик Картман",
+		"eric": "Эрик",
+		"wendy": "Венди",
+		"wendy_testaburger": "Венди Тестабургер",
+		"control1": "Управление: кнопки A, W, D.",
+		"control2": "Управление: кнопки &larr;, &uarr;, &rarr;.",
+		"controlCpu": "Управление: CPU",
+		"user": "Игрок",
+		"cpu": "Компьютер",
+		"rules": "<b>Правила игры:</b> побеждает тот игрок, который первым забьет 15 голов. При этом игорк не должен касаться мяча больше трех раз подряд. Управление игроками осуществляется с помощью клавиатуры (если в качестве игрока не выступает компьютер).",
+		"disclaimer": "Эта игра является фанатским проектом и не связана с создателями мультсериала &laquo;<a href=\"http://southpark.cc.com/\">South Park</a>&raquo;. Все персонажи и игровые локации являются собственностью их правообладателей.",
+		"winner": "Победитель",
+        "player": "Игрок",
+        "n": "№",
+	}
+}
+
+function ChangeLanguage(lang) {
+	SetCookie('spball_lang', lang, 7);
+	$(".game_lang").removeClass("selected");
+    $(".game_lang[rel='" + lang + "']").addClass("selected");
+	$(".game_title").html(Captions[lang].title);
+	$("#start_btn").html(Captions[lang].start_btn);
+	$("#pause_btn").html(Captions[lang].pause_btn);
+	$("#resume_btn").html(Captions[lang].resume_btn);
+	$("#restart_btn").html(Captions[lang].restart_btn);
+	$("#new_game_btn").html(Captions[lang].restart_btn);
+	$("a[href = 'stan']").attr("title", Captions[lang].stan_marsh);
+	$("a[href = 'kyle']").attr("title", Captions[lang].kyle_broflovski);
+	$("a[href = 'kenny']").attr("title", Captions[lang].kenny_mccormick);	
+	$("a[href = 'eric']").attr("title", Captions[lang].eric_cartman);
+	$("a[href = 'wendy']").attr("title", Captions[lang].wendy_testaburger);
+	$("a[href = 'stan'] .body_bkg").attr("title", Captions[lang].stan_marsh);
+	$("a[href = 'kyle'] .body_bkg").attr("title", Captions[lang].kyle_broflovski);
+	$("a[href = 'kenny'] .body_bkg").attr("title", Captions[lang].kenny_mccormick);
+	$("a[href = 'eric'] .body_bkg").attr("title", Captions[lang].eric_cartman);
+	$("a[href = 'wendy'] .body_bkg").attr("title", Captions[lang].wendy_testaburger);
+	$(".control_info.p1").html(Captions[lang].control1);
+	$(".control_info.p2").html(Captions[lang].control2);
+	$(".game_rules").html(Captions[lang].rules);
+	$("a[href='user']").attr("title", Captions[lang].user);
+	$("a[href='cpu']").attr("title", Captions[lang].cpu);
+	$(".game_disclamer").html(Captions[lang].disclaimer);
+	$("#p1_name").html($(".player_select.pl1 .selected").first().attr("title"));
+	$("#p2_name").html($(".player_select.pl2 .selected").first().attr("title"));
+}
+
+function SetCookie(cname, cvalue, exdays) {
+	const d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	let expires = "expires=" + d.toUTCString();
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function GetCookie(cname) {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
 }

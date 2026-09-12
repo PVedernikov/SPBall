@@ -9,12 +9,11 @@ var dKeyPressed = false;
 var wKeyPressed = false;
 
 var maxPlayerBallHits = 3;
-var maxGameScore = 15;
+var maxGameScore = 1;
 var goalAfterPause = 3000;
 
 $(document).ready(function() { 
 	$('body').bind('keydown',function(e){
-		//DebugInfo(e.which);
 		if(e.which === 37){ lArrPressed = true; return false;}
 		if(e.which === 39){ rArrPressed = true; return false;}
 		if(e.which === 38){ uArrPressed = true; return false;}
@@ -25,7 +24,6 @@ $(document).ready(function() {
 		if(e.which === 68){ dKeyPressed = true; return false;}
 		if(e.which === 87){ wKeyPressed = true; return false;}
 	}).bind('keyup',function(e){
-		//DebugInfo(e.which);
 		if(e.which === 37){ lArrPressed = false; return false;}
 		if(e.which === 39){ rArrPressed = false; return false;}
 		if(e.which === 38){ uArrPressed = false; return false;}
@@ -49,9 +47,7 @@ $(document).ready(function() {
 		Child.prototype.super = Parent.prototype;
 	}
 
-	//var gameFieldSelector = "#play_field_container";
 	var framePeriod = 40;
-	//var floorLevel = 20;
 	var floorLevel = 17;
 
 	function Game(gFieldSelector){

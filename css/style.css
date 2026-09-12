@@ -34,9 +34,35 @@ h2{
 	z-index: 360;
 	background: transparent url('../img/transparent_bkg.png');
 }
+#game_lang_select {
+    width: 900px;
+    margin: 0 auto;
+    align-content: end;
+	height: 0;
+	overflow: visible;
+}
+
+#game_lang_select .game_lang {
+	float: right;
+	width: 24px;
+	display: flex;
+	margin: 0 3px;
+	cursor: pointer;
+}
+#game_lang_select .game_lang.selected {
+	box-shadow: #000000aa 1px 1px 3px;
+}
+
+.game_disclamer {
+	text-align: center;
+	font-size: 10pt;
+	width: 900px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
 #game_over_window,
-#game_pause_window{
-	/* position: relative;*/
+#game_pause_window {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -57,11 +83,8 @@ h2{
 }
 
 #play_field_container{
-	/* display: none; */
 	background: #EEE url('../img/busstop.jpg') center center no-repeat;
-	/*background: #EEE url('../img/Marsh\'s_house.png') center center no-repeat;*/
 	margin: 0 auto;
-	/*width: 90%;*/
 	width: 1000px;
 	height: 600px;
 	position: relative;
@@ -84,7 +107,7 @@ h2{
 
 .data_table{
 	width: 100%;
-	padding: 50px;
+	padding: 0 50px;
 }
 .data_table td{
 	text-align: center;
