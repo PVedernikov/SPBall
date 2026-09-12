@@ -103,7 +103,7 @@ $(document).ready(function () {
 			Player1.SetSize(150, 180);
 			Player1.SetSpeed(7, 6);		
 		}
-		if($(".control_select[class*=p1]").children("a.selected").first().attr("href") == "user"){
+		if($(".control_select[class*=p1]").children("a.selected").first().attr("href") == "#user"){
 			var Controller1 = new PlayerManualController(Player1, "left", Ball1);
 			SPGame.AddController(Controller1);		
 		}else{
@@ -123,7 +123,7 @@ $(document).ready(function () {
 			Player2.SetSize(150, 180);
 			Player2.SetSpeed(7, 6);		
 		}
-		if($(".control_select[class*=p2]").children("a.selected").first().attr("href") == "user"){
+		if($(".control_select[class*=p2]").children("a.selected").first().attr("href") == "#user"){
 			var Controller2 = new PlayerManualController(Player2, "right", Ball1);
 			SPGame.AddController(Controller2);		
 		}else{
@@ -198,7 +198,7 @@ const Captions = {
 		"controlCpu": "Controls: CPU",
 		"user": "User",
 		"cpu": "CPU",
-		"rules": "<b>Game rules:</b> The first player to score 15 goals wins. A player must not touch the ball more than three times in a row. Players are controlled using the keyboard (unless the computer is playing).",
+		"rules": "<b>Game rules:</b> The first player to score 10 goals wins. A player must not touch the ball more than three times in a row. Players are controlled using the keyboard (unless the computer is playing).",
 		"disclaimer": "This game is a fan-made project and is not affiliated with or endorsed by the creators of &laquo;<a href=\"http://southpark.cc.com/\">South Park</a>&raquo;. All characters and settings are the property of their respective owners.",
 		"winner": "Winner",
 		"player": "Player",
@@ -225,7 +225,7 @@ const Captions = {
 		"controlCpu": "Управление: CPU",
 		"user": "Игрок",
 		"cpu": "Компьютер",
-		"rules": "<b>Правила игры:</b> побеждает тот игрок, который первым забьет 15 голов. При этом игорк не должен касаться мяча больше трех раз подряд. Управление игроками осуществляется с помощью клавиатуры (если в качестве игрока не выступает компьютер).",
+		"rules": "<b>Правила игры:</b> побеждает тот игрок, который первым забьет 10 голов. При этом игорк не должен касаться мяча больше трех раз подряд. Управление игроками осуществляется с помощью клавиатуры (если в качестве игрока не выступает компьютер).",
 		"disclaimer": "Эта игра является фанатским проектом и не связана с создателями мультсериала &laquo;<a href=\"http://southpark.cc.com/\">South Park</a>&raquo;. Все персонажи и игровые локации являются собственностью их правообладателей.",
 		"winner": "Победитель",
         "player": "Игрок",
