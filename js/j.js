@@ -214,7 +214,7 @@ const Captions = {
 		"stan": "Стен",
 		"kyle_broflovski": "Кайл Брофловски",
 		"kyle": "Кайл",
-		"kenny_mccormick": "Kenny МакКормик",
+		"kenny_mccormick": "Кенни МакКормик",
 		"kenny": "Кенни",
 		"eric_cartman": "Эрик Картман",
 		"eric": "Эрик",
